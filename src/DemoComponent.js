@@ -27,7 +27,7 @@ export default class DemoComponent extends React.Component {
             <LocaleProvider locale={local}>
                 <div>
                     <p>Current Version:{version}</p>
-                    <Button onClick={this.changeLocale}>{local ? '当前中文' : '当前English'}</Button>
+                    <Button type='primary' onClick={this.changeLocale}>{local ? '当前中文' : '当前English'}</Button>
                     <br/>
                     <DatePicker/>
                 </div>
