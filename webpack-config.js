@@ -16,7 +16,7 @@ module.exports = (type) => { // eslint-disable-line
 
   return {
     devtool: {
-      dev: 'eval',
+      dev: 'source-map',
       dll: false,
       test: false,
       dist: false,
@@ -64,6 +64,13 @@ module.exports = (type) => { // eslint-disable-line
       // Exposed asset path. NOTE: the end '/' is necessary
       publicPath: '/static/'
     },
+
+      resolve: {
+          extensions: ['.js', '.jsx', '.less', '.css'],
+          alias: {
+              moment: path.resolve(path.join(__dirname, 'node_modules', 'moment'))
+          },
+      },
 
     plugins: _.compact([
       isDev && new webpack.HotModuleReplacementPlugin(),

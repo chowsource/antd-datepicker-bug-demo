@@ -129,4 +129,27 @@ function buildDevDll() {
   return Promise.resolve();
 }
 
+// Start an express server for build result.
+function startBuildServer() {
+    const app = express();
+    const root = path.join(__dirname, '../build');
+    app.use(express.static(root));
+    app.use(fallback('index.html', { root }));
+
+    // Other files should not happen, respond 404
+    app.get('*', (req, res) => {
+        console.log('Warning: unknown req: ', req.path);
+        res.sendStatus(404);
+    });
+
+    app.listen(6002, (err) => {
+        if (err) {
+            console.error(err);
+        }
+
+        console.log(`Dist server at http://localhost:6002/`);
+    });
+}
+
+startBuildServer();
 buildDevDll().then(startDevServer);
