@@ -24,9 +24,6 @@ export default class DemoComponent extends React.Component {
             // const values = {
             //     'startDate':timerange[0].format('YYYYMMDD'),
             //     'endDate':timerange[1].format('YYYYMMDD'),
-            //     // 'draw': 1,
-            //     // 'start': 0,
-            //     // 'length': -1,
             // };
            console.log(values);
         });
